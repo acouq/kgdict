@@ -16,7 +16,7 @@ git clone https://github.com/acouq/kgdict.git
 cd kgdict
 ```
 
-使用 uv 进行安装：
+使用 [uv](https://github.com/astral-sh/uv) 进行安装：
 
 ```
 uv tool install .

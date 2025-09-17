@@ -17,6 +17,7 @@ from err import (
 
 class WordTable:
     """词表行模型。"""
+
     def __init__(self, word: str, meaning: str) -> None:
         self.word = word
         self.meaning = meaning
@@ -24,6 +25,7 @@ class WordTable:
 
 class DictDataBase:
     """词典数据库封装，负责连接、建表与 CRUD。"""
+
     def __init__(self, db_path: str):
         self.db_path = db_path
         self._connect()

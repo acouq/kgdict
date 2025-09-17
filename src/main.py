@@ -37,16 +37,22 @@ class App:
                         word_meanings.append(wm)
                 if word_meanings:
                     print(render_table(word_meanings))
+                else:
+                    print("No result.")
             case "pick":
                 word_meanings = self.dict.query_random(self.user_input.pick.count)
                 if word_meanings:
                     print(render_table(word_meanings))
+                else:
+                    print("No result.")
             case "range":
                 word_meanings = self.dict.query_range(
                     self.user_input.range.start, self.user_input.range.end
                 )
                 if word_meanings:
                     print(render_table(word_meanings))
+                else:
+                    print("No result.")
 
     def close(self) -> None:
         self.dict.close_db()

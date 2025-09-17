@@ -12,18 +12,21 @@ class AddArgs:
 
     - words: 待新增的词语列表
     """
+
     words: list[str]
 
 
 @dataclass
 class DelArgs:
     """del 命令参数：待删除的词语列表。"""
+
     words: list[str]
 
 
 @dataclass
 class SetArgs:
     """set 命令参数：设置单个词语的词义。"""
+
     word: str
     meaning: str
 
@@ -31,18 +34,21 @@ class SetArgs:
 @dataclass
 class GetArgs:
     """get 命令参数：待查询的词语列表。"""
+
     words: list[str]
 
 
 @dataclass
 class PickArgs:
     """pick 命令参数：随机抽取的数量。"""
+
     count: int
 
 
 @dataclass
 class RangeArgs:
     """range 命令参数：基于位置区间的开始与结束（闭区间）。"""
+
     start: int
     end: int
 

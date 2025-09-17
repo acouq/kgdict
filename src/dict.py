@@ -6,12 +6,18 @@
 from openai import OpenAI
 
 from db import DictDataBase, WordTable
-from err import DatabaseInsertError, ParseApiResponseError, RequestApiError, UserInterruptError
+from err import (
+    DatabaseInsertError,
+    ParseApiResponseError,
+    RequestApiError,
+    UserInterruptError,
+)
 from settings import Settings
 
 
 class Dict:
     """提供词语的增删改查与释义生成。"""
+
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
         self.db = DictDataBase(self.settings.db_path)
@@ -38,7 +44,9 @@ class Dict:
             try:
                 content = response.choices[0].message.content
                 if not content:
-                    raise RequestApiError(f"the response content for word `{word}` is null")
+                    raise RequestApiError(
+                        f"the response content for word `{word}` is null"
+                    )
             except Exception as e:
                 raise ParseApiResponseError(e) from e
 
@@ -46,7 +54,7 @@ class Dict:
             cleaned = content.strip()
             for marker in ("释义：", "释义:", "定义：", "定义:"):
                 if cleaned.startswith(marker):
-                    cleaned = cleaned[len(marker):].lstrip()
+                    cleaned = cleaned[len(marker) :].lstrip()
             if not cleaned.endswith("。"):
                 cleaned += "。"
             return cleaned

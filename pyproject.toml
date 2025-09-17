@@ -1,11 +1,10 @@
 [project]
 name = "kgdict"
-version = "0.1.0"
+version = "0.1.1"
 description = "考公词语字典。"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "python-dotenv>=1.0.0",
     "openai>=1.107.3",
 ]
 

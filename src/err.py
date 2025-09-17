@@ -1,5 +1,6 @@
 """错误类型定义。"""
 
+
 class AppError(Exception):
     def __str__(self) -> str:
         return f"App error: {super().__str__()}"

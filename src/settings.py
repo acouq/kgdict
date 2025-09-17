@@ -5,11 +5,8 @@
 
 import os
 
-from dotenv import load_dotenv
 
 from err import ParseApiKeyError
-
-load_dotenv()
 
 
 class Settings:

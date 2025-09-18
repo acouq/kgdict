@@ -1,6 +1,6 @@
 [project]
 name = "kgdict"
-version = "0.1.1"
+version = "0.1.2"
 description = "考公词语字典。"
 readme = "README.md"
 requires-python = ">=3.13"

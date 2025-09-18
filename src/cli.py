@@ -18,7 +18,7 @@ from err import ParseUserInputError
 from user_input import UserInput
 
 
-_VERSION = "0.1.1"
+_VERSION = "0.1.2"
 
 
 class QuietArgumentParser(argparse.ArgumentParser):

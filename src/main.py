@@ -1,3 +1,4 @@
+import sys
 from typing import Any
 
 from cli import get_user_input
@@ -67,10 +68,10 @@ def main(argv: Any | None = None) -> int:
         print("Exiting...")
         return 1
     except AppError as e:
-        print(e)
+        print(e, file=sys.stderr)
         return 2
     except Exception as e:
-        print(f"Unexpected err: {e}")
+        print(f"Unexpected err: {e}", file=sys.stderr)
         return 3
     finally:
         if app:

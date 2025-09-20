@@ -18,42 +18,58 @@ class App:
     def run(self) -> None:
         match self.user_input.op:
             case "add":
-                for w in self.user_input.add.words:
-                    self.dict.add_word(w)
-                    print(f"Add {w} success.")
+                self._run_add()
             case "del":
-                for w in self.user_input.delete.words:
-                    self.dict.delete_word(w)
-                    print(f"Delete {w} success.")
+                self._run_del()
             case "set":
-                self.dict.update_word(
-                    self.user_input.set.word, self.user_input.set.meaning
-                )
-                print("Set success.")
+                self._run_set()
             case "get":
-                word_meanings = []
-                for w in self.user_input.get.words:
-                    wm = self.dict.query_word(w)
-                    if wm:
-                        word_meanings.append(wm)
-                if word_meanings:
-                    print(render_table(word_meanings))
-                else:
-                    print("No result.")
+                self._run_get()
             case "pick":
-                word_meanings = self.dict.query_random(self.user_input.pick.count)
-                if word_meanings:
-                    print(render_table(word_meanings))
-                else:
-                    print("No result.")
+                self._run_pick()
             case "range":
-                word_meanings = self.dict.query_range(
-                    self.user_input.range.start, self.user_input.range.end
-                )
-                if word_meanings:
-                    print(render_table(word_meanings))
-                else:
-                    print("No result.")
+                self._run_range()
+
+    def _run_add(self) -> None:
+        for w in self.user_input.add.words:
+            self.dict.add_word(w)
+            print(f"Add {w} success.")
+
+    def _run_del(self) -> None:
+        for w in self.user_input.delete.words:
+            self.dict.delete_word(w)
+            print(f"Delete {w} success.")
+
+    def _run_set(self) -> None:
+        self.dict.update_word(self.user_input.set.word, self.user_input.set.meaning)
+        print("Set success.")
+
+    def _run_get(self) -> None:
+        word_meanings = []
+        for w in self.user_input.get.words:
+            wm = self.dict.query_word(w)
+            if wm:
+                word_meanings.append(wm)
+        if word_meanings:
+            print(render_table(word_meanings))
+        else:
+            print("No result.")
+
+    def _run_pick(self) -> None:
+        word_meanings = self.dict.query_random(self.user_input.pick.count)
+        if word_meanings:
+            print(render_table(word_meanings))
+        else:
+            print("No result.")
+
+    def _run_range(self) -> None:
+        word_meanings = self.dict.query_range(
+            self.user_input.range.start, self.user_input.range.end
+        )
+        if word_meanings:
+            print(render_table(word_meanings))
+        else:
+            print("No result.")
 
     def close(self) -> None:
         self.dict.close_db()

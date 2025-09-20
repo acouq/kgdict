@@ -12,17 +12,17 @@
 """
 
 import argparse
-from typing import Any
+from typing import Any, NoReturn
 
 from err import ParseUserInputError
 from user_input import UserInput
 
 
-_VERSION = "0.1.2"
+_VERSION = "0.1.3"
 
 
 class QuietArgumentParser(argparse.ArgumentParser):
-    def error(self, message: str) -> None:
+    def error(self, message: str) -> NoReturn:
         raise argparse.ArgumentError(None, message)
 
 
